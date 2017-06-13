@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <style>
+            img{
+                width:300px;
+                height:200px;
+            }
+            .targetDiv{
+            min-height:300px;
+            min-width:300px;
+            max-width:1200px;
+            border:1px solid red;
+            }
+
+            .targetDiv img{
+                padding:5px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="targetDiv"
+            id="target" 
+            ondragover="allowDrop(event)"
+            ondrop="drop(event)"/>
+            <p>请将本机内文件拖拽至此</p>
+        </div>
+         <script>
+            var target=document.getElementById('target');
+            var moveID;
+            function drop(e) {
+                e.preventDefault();
+                var files =e.dataTransfer.files ;
+
+                console.log(files[0]);   
+                var fileHtml="<table><tr><td>文件名称</td><td>文件大小</td><td>文件类型</td></tr>"
+                for(i=0;i<files.length;i++){
+                    fileHtml+="<tr><td>"+files[i].name+"</td><td>"+files[i].size+"</td><td>"+files[i].type+"</td></tr>" 
+                }    
+
+                fileHtml+="</table>"  
+                target.innerHTML=fileHtml;
+            }
+
+            function allowDrop(ev)
+            {
+                ev.preventDefault();
+            }
+        </script>
+    </body>
+</html>
