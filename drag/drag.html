@@ -1,22 +1,52 @@
 <html>
     <head>
         <style>
-        img{
-            width:300px;
-            height:200px;
-        }
+            img{
+                width:300px;
+                height:200px;
+            }
+            .targetDiv{
+            min-height:300px;
+            min-width:300px;
+            max-width:1200px;
+            border:1px solid red;
+            }
+
+            .targetDiv img{
+                padding:5px;
+            }
         </style>
-       
     </head>
     <body>
         <div id="src"> 
-            <img id="img1" ondragover="allowDrop(event)" ondragstart="Gotid(event)" draggable="true" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497283621932&di=6e369209507e911990abf4993f2ceee8&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F12%2F82%2F37%2F56v58PICZrM.jpg" alt=""/>
-            <img id="img2" ondragover="allowDrop(event)"ondragstart="Gotid(event)" draggable="true" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497283621932&di=41fa35f30dc08807a11a71062f4da66b&imgtype=0&src=http%3A%2F%2Fpic36.nipic.com%2F20131203%2F3822951_102233914000_2.jpg" alt=""/>
-            <img id="img3"ondragover="allowDrop(event)" ondragstart="Gotid(event)" draggable="true" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497283621932&di=60c466b257a844996d959fc00fe29a49&imgtype=0&src=http%3A%2F%2Fs10.sinaimg.cn%2Fmw690%2F006lXuvozy6Yj6BJ4Zrd9%26690" alt=""/>
-            <img id="img4" ondragover="allowDrop(event)" ondragstart="Gotid(event)" draggable="true" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497283621932&di=ae58d0706afcd63bb6c6db1f191abf9c&imgtype=0&src=http%3A%2F%2Fimg3.3lian.com%2F2013%2Fc1%2F31%2Fd%2F3.jpg" alt=""/>
+            <img id="img1" 
+                ondragover="allowDrop(event)" 
+                ondragstart="gotid(event)" 
+                draggable="true" 
+                src="../asset/205.jpg" alt=""/>
+            <img id="img2" 
+                ondragover="allowDrop(event)"
+                ondragstart="gotid(event)" 
+                draggable="true" 
+                src="../asset/timg.jpeg" 
+                alt=""/>
+            <img id="img3"
+                ondragover="allowDrop(event)" 
+                ondragstart="gotid(event)" 
+                draggable="true" 
+                src="../asset/206.jpg" 
+                alt=""/>
+            <img id="img4" 
+                ondragover="allowDrop(event)" 
+                ondragstart="gotid(event)" 
+                draggable="true" 
+                src="../asset/timg1.jpeg" 
+                alt=""/>
         </div>
-        <div id="target" ondragover="allowDrop(event)" ondrop="drop(event)"
-         style="min-height:300px;min-width:300px;max-width:1200px;border:1px solid red">
+        <div class="targetDiv"
+            id="target" 
+            ondragover="allowDrop(event)"
+            ondrop="drop(event)"/>
             <p>请将图片拖拽至此</p>
         </div>
          <script>
@@ -24,19 +54,17 @@
             var moveID;
             function drop(e) {
                 e.preventDefault();
-                
-                console.log(moveID)
-            
+                            
                 target.appendChild(document.getElementById(moveID).cloneNode());
             }
 
             function allowDrop(ev)
             {
-            ev.preventDefault();
+                ev.preventDefault();
             }
 
-            function Gotid(e){
-moveID=e.target.id;
+            function gotid(e){
+                moveID=e.target.id;
             }
         </script>
     </body>
